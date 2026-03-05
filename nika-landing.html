@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika — Social Media Management & Content Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Social Media Manager & Content Strategist. Strategie di comunicazione e immagine potenziate dall'AI per brand che vogliono lasciare il segno.">
+<link rel="stylesheet" href="CSS\style.css">
+</head>
+<body>
+
+<!-- CURSORI CUSTOM -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu">✕</button>
+  <a href="#servizi" onclick="closeMobile()">Servizi</a>
+  <a href="#credibilita" onclick="closeMobile()">Chi sono</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contatti" onclick="closeMobile()">Contatti</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+  <img src="images\logo.png" alt="Nika Logo" style="height: 85px; width: auto;">
+</a>
+  <ul class="nav-links">
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#credibilita">Chi sono</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  <li><a href="#contatti" class="nav-cta">Scrivimi</a></li>  
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="openMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-noise"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag reveal"><span></span> Social Media & Content Strategy</div>
+    <h1 class="hero-h1 reveal reveal-delay-1">
+      L'estetica incontra<br>
+      <em>l'algoritmo:</em><br>
+      eleva la tua presenza digitale.
+    </h1>
+    <p class="hero-promise reveal reveal-delay-2">
+Strategie di comunicazione e immagine
+potenziate dall'AI, <br> per il tuo brand che non vuole passare inosservato.
+    </p>
+    <a href="#servizi" class="hero-cta reveal reveal-delay-3">
+      Scopri il Metodo Nika
+      <a href="#contatti" style="display:block; margin-top:16px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--verde); opacity:0.6; text-decoration:none;"></a>
+     <!-- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>-->
+  </div>
+
+  <div class="hero-visual reveal reveal-delay-2">
+    <div class="hero-portrait-wrap">
+      <div class="hero-portrait-bg"></div>
+      <div class="hero-portrait">
+         <img src="images\image.png" alt="Nika">
+    
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-label">Contenuti creati</div>
+        <div class="hero-badge-val">300+</div>
+      </div>
+      <div class="hero-badge2">
+        <p>Specializzazione</p>
+        <span>AI-Powered Strategy</span>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scorri
+  </div> -->
+</section>
+
+<!-- PROBLEMA -->
+<section style="padding: 0 0 80px; background: transparent;">
+  <div class="problema reveal">
+    <div style="padding: 80px 60px 80px 60px;">
+      <span class="section-tag">Il problema</span>
+      <h2 class="section-title" style="color: var(--beige);">Ti senti <em>invisibile</em> nel rumore digitale?</h2>
+      <p class="problema-text">
+        Se il tuo contenuto manca di anima o la tua strategia è ferma al 2020, sei nel posto giusto. Lavoro con imprenditori e brand che cercano un'estetica editoriale senza rinunciare alla performance.
+      </p>
+    </div>
+    <div style="padding: 80px 60px 80px 0;" class="problema-highlights">
+      <div class="problema-item reveal reveal-delay-1">
+        <h4>Contenuti senz'anima</h4>
+        <p>Post generici che non rispecchiano l'identità del tuo brand e non convertono.</p>
+      </div>
+      <div class="problema-item reveal reveal-delay-2">
+        <h4>Strategia obsoleta</h4>
+        <p>Approcci superati che ignorano le potenzialità dell'AI e dei nuovi algoritmi.</p>
+      </div>
+      <div class="problema-item reveal reveal-delay-3">
+        <h4>Presenza invisibile</h4>
+        <p>Sei online ma non vieni trovato. Il tuo messaggio si perde nel rumore digitale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUZIONE -->
+<section class="soluzione" id="servizi" style="padding-top: 20px;">
+  <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <span class="section-tag reveal">Cosa offro</span>
+    <h2 class="section-title reveal reveal-delay-1">Soluzioni su misura<br><em>per il tuo brand</em></h2>
+  </div>
+  <div class="soluzione-grid">
+  
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3 class="service-title">Social Media Management</h3>
+      <p class="service-desc">Gestione totale dei tuoi canali con una visione estetica coerente. Ogni post, ogni storia, ogni interazione progettata per costruire una presenza riconoscibile.</p>
+      <span class="service-tag">Gestione completa</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3 class="service-title">Content Strategy</h3>
+      <p class="service-desc">Il tuo piano d'attacco narrativo. Definisco obiettivi, tone of voice, pillar editoriali e un calendario che trasforma la tua comunicazione in un sistema coerente.</p>
+      <span class="service-tag">Piano strategico</span>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3 class="service-title">Content Creation & Visual Design</h3>
+      <p class="service-desc">Produzione di asset di alto livello: copy raffinato, grafica editoriale, video concept. Contenuti che ispirano, convertono e rimangono impressi.</p>
+      <span class="service-tag">Produzione asset</span>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h3 class="service-title">AI Powered Solutions</h3>
+      <p class="service-desc">L'efficienza del futuro applicata oggi. Automazioni intelligenti, workflow ottimizzati con AI generativa e strumenti che moltiplicano l'output senza sacrificare la qualità.</p>
+      <span class="service-tag">Futuro ora</span>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:60px;" class="reveal">
+  <p style="font-size:15px; color:var(--verde); opacity:0.7; margin-bottom:24px; font-weight:300;">Vuoi tutto questo per il tuo brand?</p>
+  <a href="#contatti" class="hero-cta">
+    Scrivimi ora
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+</section>
+
+<!-- CREDIBILITÀ -->
+<section style="padding: 0 0 0; background: transparent;" id="credibilita">
+  <div class="credibilita reveal">
+    <div style="padding: 80px 60px;">
+      <span class="section-tag">Perché Nika</span>
+      <h2 class="section-title reveal reveal-delay-1">Numeri che parlano,<br><em>risultati che restano</em></h2>
+      <p class="cred-desc reveal reveal-delay-2">
+        Anni di esperienza nel settore digitale. Un approccio data-driven unito a un'estetica raffinata che non sacrifica mai la performance per la forma.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num">300+</div>
+          <div class="stat-label">Contenuti prodotti ad alto impatto</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Anni nel settore digital</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Approccio personalizzato su ogni progetto</div>
+        </div>
+      </div>
+      <div class="cred-badges reveal">
+        <div class="cred-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Strategia Data-Driven
+        </div>
+        <div class="cred-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          AI-Powered Workflow
+        </div>
+        <div class="cred-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Estetica Editoriale
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:48px;" class="reveal">
+  <div style="text-align:center; margin-top:48px; padding: 0 60px 60px;" class="reveal">
+  <a href="#contatti" class="hero-cta" style="background:var(--verde); color:var(--beige); border-color:var(--verde);">
+    Iniziamo insieme
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq" style="padding-top: 40px;">
+  <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <span class="section-tag reveal">Hai domande?</span>
+    <h2 class="section-title reveal reveal-delay-1">Tutto quello che<br><em>vuoi sapere</em></h2>
+  </div>
+  <div class="faq-list reveal reveal-delay-2">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Come integri l'AI nei contenuti?
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">L'AI è uno strumento, non un sostituto della creatività. La uso per velocizzare la ricerca, generare varianti di copy, analizzare dati di performance e automatizzare processi ripetitivi. Il risultato finale passa sempre attraverso il mio editing e la mia visione editoriale, mantenendo l'autenticità della tua voce.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Il servizio è personalizzabile?
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Assolutamente sì. Non esiste un pacchetto standard: ogni collaborazione parte da un'analisi approfondita del tuo brand, dei tuoi obiettivi e del tuo pubblico. Costruiamo insieme un percorso su misura che si adatta al tuo budget e alle tue esigenze specifiche.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Quali piattaforme gestisci?
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Lavoro principalmente con Instagram, LinkedIn, TikTok e Facebook. Posso supportarti anche nella gestione di newsletter, blog e altri canali di contenuto. La scelta delle piattaforme dipende sempre dal tuo target e dai tuoi obiettivi di business.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Come inizia la collaborazione?
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Il primo passo è una call conoscitiva gratuita di 30 minuti in cui esploriamo le tue esigenze, gli obiettivi e la visione del tuo brand. Se c'è allineamento, procedo con un'analisi approfondita e la proposta di un piano strategico personalizzato.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Lavori con ogni tipo di brand?
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Sono selettiva nelle collaborazioni. Lavoro con imprenditori, professionisti e brand che hanno una visione chiara e vogliono costruire una presenza digitale di qualità. Non faccio quantità: preferisco pochi clienti a cui dedicare attenzione e cura massima.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section style="padding: 0 0 80px; background: transparent;" id="contatti">
+  <div class="cta-finale reveal">
+    <div style="padding: 80px 60px; position: relative; z-index: 2;">
+      <span class="section-tag">Iniziamo</span>
+      <h2 class="section-title reveal reveal-delay-1" style="max-width: 500px; margin: 0 auto 20px;">Ogni <em>brand</em> straordinario inizia da una <em>conversazione</em>.</h2>
+      <p class="cta-sub reveal reveal-delay-2">Raccontami il tuo progetto. Rispondo entro 24 ore con idee concrete e un piano d'azione.</p>
+
+      <form class="cta-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
+        <input type="text" class="form-field" placeholder="Il tuo nome" required>
+        <input type="email" class="form-field" placeholder="La tua email" required>
+        <textarea class="form-field" rows="4" placeholder="Raccontami il tuo progetto..." required></textarea>
+        <button type="submit" class="btn-primary" style="align-self: center; width: fit-content;">
+          Invia il messaggio
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Nika</div>
+    <div class="footer-copy">© 2025 Nikadigitalweb<br> Social Media Manager & Content Strategist <br> P.IVA 00000000000</div>
+  </div>
+  <div class="footer-center">
+    <div class="footer-tagline">"L'estetica incontra l'algoritmo"</div>
+  </div>
+  <div class="footer-social">
+   <a href="https://www.instagram.com/nikadigital.hub/" target="_blank" class="social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank" class="social-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@nikadigital.hub?lang=en" target="_blank" class="social-link" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let fx = 0, fy = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; });
+  function animFollower() {
+    fx += (cx - fx) * 0.12;
+    fy += (cy - fy) * 0.12;
+    follower.style.left = fx + 'px';
+    follower.style.top = fy + 'px';
+    requestAnimationFrame(animFollower);
+  }
+  animFollower();
+  document.querySelectorAll('a, button, .service-card, .faq-q, .problema-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%, -50%) scale(2.5)'; cursor.style.background = 'transparent'; cursor.style.border = '1.5px solid var(--verde)'; follower.style.opacity = '0'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; cursor.style.background = 'var(--verde)'; cursor.style.border = 'none'; follower.style.opacity = '0.6'; });
+  });
+
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+  // MOBILE MENU
+  function openMobile() { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+  document.getElementById('closeMenu').addEventListener('click', closeMobile);
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Trigger hero reveals immediately
+  setTimeout(() => { document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible')); }, 100);
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // FORM
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Messaggio inviato!';
+    btn.style.background = 'var(--beige)';
+    btn.style.color = 'var(--verde)';
+    setTimeout(() => { btn.innerHTML = 'Invia il messaggio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'; btn.style.background = 'var(--beige)'; btn.style.color = 'var(--verde)'; }, 3000);
+  }
+
+  // PARALLAX LEGGERO HERO
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const heroPortrait = document.querySelector('.hero-portrait-wrap');
+    if (heroPortrait && scrolled < window.innerHeight) {
+      heroPortrait.style.transform = `translateY(${scrolled * 0.08}px)`;
+    }
+  });
+</script>
+<a href="https://wa.me/393318461681" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.428a.75.75 0 0 0 .916.916l5.628-1.472A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.528-5.228-1.444l-.374-.223-3.88 1.016 1.03-3.762-.244-.389A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+</body>
+</html>
