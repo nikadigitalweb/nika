@@ -256,11 +256,12 @@ potenziate dall'AI, <br> per il tuo brand che non vuole passare inosservato.
       <h2 class="section-title reveal reveal-delay-1" style="max-width: 500px; margin: 0 auto 20px;">Ogni <em>brand</em> straordinario inizia da una <em>conversazione</em>.</h2>
       <p class="cta-sub reveal reveal-delay-2">Raccontami il tuo progetto. Rispondo entro 24 ore con idee concrete e un piano d'azione.</p>
 
-<form id="contact-form" action="https://formsubmit.co/el/pedefo" method="POST" class="cta-form">
+<form id="contact-form" action="https://formsubmit.co/ajax/el/pedefo" method="POST" class="cta-form">
   <input type="text" name="nome" class="form-field" placeholder="Il tuo nome" required>
   <input type="email" name="email" class="form-field" placeholder="La tua email" required>
   <textarea name="messaggio" class="form-field" rows="4" placeholder="Raccontami il tuo progetto..." required></textarea>
   <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
   <button type="submit" class="btn-primary" id="submit-btn" style="align-self: center; width: fit-content;">
     Invia il messaggio
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -279,13 +280,14 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const btn = document.getElementById('submit-btn');
   btn.textContent = 'Invio in corso...';
   btn.disabled = true;
+  const formData = new FormData(this);
   try {
-    const response = await fetch(this.action, {
+    const response = await fetch('https://formsubmit.co/ajax/el/pedefo', {
       method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
+      body: formData
     });
-    if (response.ok) {
+    const result = await response.json();
+    if (result.success === 'true' || result.success === true) {
       document.getElementById('form-success').style.display = 'block';
       document.getElementById('form-error').style.display = 'none';
       this.reset();
