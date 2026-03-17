@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizi — Nika Digital Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── SERVIZI PAGE ── */
+
+/* PAGE HERO */
+.page-hero {
+  padding: 160px 64px 100px;
+  background: var(--beige-light);
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(54,71,52,.06) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.page-hero-text .tag { margin-bottom: 14px; }
+.page-hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1.05; color: var(--verde); font-weight: 700;
+  letter-spacing: -1.5px; margin-bottom: 24px;
+}
+.page-hero-text h1 em { font-style: italic; color: var(--verde-light); }
+.page-hero-text p { font-size: 16px; line-height: 1.85; color: var(--verde); opacity: .68; font-weight: 300; max-width: 420px; }
+.page-hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.hero-stat-card {
+  background: var(--beige); border-radius: var(--r-xl);
+  padding: 32px 28px;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  cursor: default;
+}
+.hero-stat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(54,71,52,.12); }
+.hero-stat-card:nth-child(3) { background: var(--verde); }
+.hero-stat-card:nth-child(3) strong,
+.hero-stat-card:nth-child(3) span { color: var(--beige); }
+.hero-stat-card:nth-child(3) span { opacity: .55; }
+.hero-stat-card strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px; font-weight: 700; color: var(--verde);
+  display: block; line-height: 1; margin-bottom: 10px;
+}
+.hero-stat-card span { font-size: 12px; color: var(--verde); opacity: .55; line-height: 1.5; display: block; }
+
+/* SERVIZI FULL */
+.servizi-full { padding: 120px 64px; }
+.servizio-full-item {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(54,71,52,.08);
+}
+.servizio-full-item:first-child { padding-top: 0; }
+.servizio-full-item:last-child { border-bottom: none; padding-bottom: 0; }
+.servizio-full-item.reverse { direction: rtl; }
+.servizio-full-item.reverse > * { direction: ltr; }
+
+.sf-visual {
+  border-radius: var(--r-xl); overflow: hidden;
+  aspect-ratio: 4/3; background: var(--verde);
+  position: relative;
+}
+.sf-visual img { width: 100%; height: 100%; object-fit: cover; }
+.sf-visual-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; color: var(--beige); opacity: .2;
+}
+.sf-visual-placeholder svg { width: 48px; height: 48px; stroke: currentColor; fill: none; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+.sf-visual-placeholder span { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; }
+.sf-visual-accent {
+  position: absolute; bottom: 24px; left: 24px;
+  background: var(--beige); border-radius: var(--r-sm);
+  padding: 12px 18px;
+}
+.sf-visual-accent span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--verde); opacity: .55; display: block; margin-bottom: 3px; }
+.sf-visual-accent strong { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--verde); font-weight: 700; }
+
+.sf-text .s-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: rgba(54,71,52,.18); margin-bottom: 14px; }
+.sf-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 700; color: var(--verde); line-height: 1.15; margin-bottom: 20px; }
+.sf-text h2 em { font-style: italic; color: var(--verde-light); }
+.sf-text p { font-size: 15px; line-height: 1.85; color: var(--verde); opacity: .7; font-weight: 300; margin-bottom: 28px; }
+.sf-includes { margin-bottom: 32px; }
+.sf-includes h4 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--verde); opacity: .5; margin-bottom: 14px; }
+.sf-list { display: flex; flex-direction: column; gap: 10px; }
+.sf-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--verde); opacity: .75; list-style: none;
+}
+.sf-list li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--verde-light); flex-shrink: 0;
+}
+
+/* PROCESSO */
+.processo-section {
+  background: var(--verde);
+  border-radius: var(--r-xl);
+  margin: 0 40px;
+  padding: 100px 80px;
+}
+.processo-header { text-align: center; margin-bottom: 72px; }
+.processo-header .tag { color: rgba(234,227,210,.55); }
+.processo-header .heading { color: var(--beige); }
+.processo-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.processo-steps::before {
+  content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
+  height: 1px; background: rgba(234,227,210,.12);
+}
+.pstep { text-align: center; padding: 0 20px; position: relative; }
+.pstep-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(234,227,210,.1); border: 1px solid rgba(234,227,210,.2);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--beige);
+  position: relative; z-index: 1;
+}
+.pstep h3 { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--beige); margin-bottom: 10px; font-weight: 600; }
+.pstep p { font-size: 13px; line-height: 1.75; color: var(--beige); opacity: .55; }
+
+/* FAQ */
+.faq-section { padding: 100px 64px; }
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-header { text-align: center; margin-bottom: 56px; }
+.faq-item { border-bottom: 1px solid rgba(54,71,52,.1); }
+.faq-q {
+  width: 100%; padding: 22px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 600; color: var(--verde);
+  background: none; border: none; cursor: pointer; text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  transition: var(--t);
+}
+.faq-q:hover { opacity: .75; }
+.faq-icon { width: 28px; height: 28px; flex-shrink: 0; background: var(--beige); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--t); }
+.faq-icon svg { width: 12px; height: 12px; stroke: var(--verde); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+.faq-item.open .faq-icon { background: var(--verde); transform: rotate(45deg); }
+.faq-item.open .faq-icon svg { stroke: var(--beige); }
+.faq-a {
+  font-size: 14px; line-height: 1.85; color: var(--verde); opacity: .65;
+  font-weight: 300; max-height: 0; overflow: hidden; transition: max-height .4s var(--ease), padding .3s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+
+/* CTA */
+.cta-banner {
+  margin: 40px 40px 0;
+  background: var(--verde); border-radius: var(--r-xl);
+  padding: 100px 80px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: 'N'; position: absolute; top: -80px; right: -50px;
+  font-family: 'Playfair Display', serif; font-size: 520px;
+  font-weight: 700; font-style: italic;
+  color: rgba(234,227,210,.035); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.cta-banner .tag { color: rgba(234,227,210,.55); }
+.cta-banner .heading { max-width: 520px; margin: 0 auto 14px; }
+.cta-sub { font-size: 15px; color: var(--beige); opacity: .6; font-weight: 300; margin-bottom: 44px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .page-hero { padding: 140px 32px 80px; gap: 48px; }
+  .servizi-full { padding: 80px 32px; }
+  .servizio-full-item { grid-template-columns: 1fr; gap: 40px; }
+  .servizio-full-item.reverse { direction: ltr; }
+  .processo-section { margin: 0 20px; padding: 70px 40px; }
+  .processo-steps { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .processo-steps::before { display: none; }
+  .faq-section { padding: 80px 32px; }
+  .cta-banner { margin: 40px 20px 0; padding: 70px 40px; }
+}
+@media (max-width: 640px) {
+  .page-hero { grid-template-columns: 1fr; padding: 120px 20px 60px; }
+  .page-hero-stats { grid-template-columns: 1fr 1fr; }
+  .processo-section { margin: 0 12px; padding: 48px 24px; }
+  .processo-steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .faq-section { padding: 60px 20px; }
+  .cta-banner { margin: 40px 12px 0; padding: 56px 24px; }
+  .servizi-full { padding: 60px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="contatti.html">Contatti</a>
+  <div class="mob-social">
+    <a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="site-nav solid" id="siteNav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nika"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="servizi.html" class="active">Servizi</a></li>
+    <li><a href="contatti.html" class="nav-cta">Scrivimi</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-text">
+    <span class="tag reveal">Cosa faccio</span>
+    <h1 class="reveal d1">Soluzioni su misura<br><em>per il tuo brand</em></h1>
+    <p class="reveal d2">Non pacchetti standard. Ogni collaborazione parte da una diagnosi accurata del tuo brand e si trasforma in un piano d'azione personalizzato.</p>
+  </div>
+  <div class="page-hero-stats reveal d2">
+    <div class="hero-stat-card"><strong>300+</strong><span>Contenuti prodotti ad alto impatto</span></div>
+    <div class="hero-stat-card"><strong>4</strong><span>Aree di specializzazione</span></div>
+    <div class="hero-stat-card"><strong>AI</strong><span>Intelligenza artificiale integrata nel metodo</span></div>
+    <div class="hero-stat-card"><strong>100%</strong><span>Approccio personalizzato su ogni progetto</span></div>
+  </div>
+</section>
+
+<!-- SERVIZI DETTAGLIO -->
+<section class="servizi-full">
+
+  <!-- 01 Social Media -->
+  <div class="servizio-full-item">
+    <div class="sf-visual reveal">
+      <img src="images/image8.png" alt="Social Media Management">
+      <div class="sf-visual-accent"><span>Servizio</span><strong>Social Media</strong></div>
+    </div>
+    <div class="sf-text reveal d2">
+      <div class="s-num">01</div>
+      <h2>Social Media<br><em>Management</em></h2>
+      <p>Gestione totale e strategica dei tuoi canali social. Ogni post, ogni storia, ogni interazione è progettata con intenzione: per costruire una presenza riconoscibile che cresce nel tempo.</p>
+      <div class="sf-includes">
+        <h4>Cosa è incluso</h4>
+        <ul class="sf-list">
+          <li>Calendario editoriale mensile</li>
+          <li>Creazione e pubblicazione contenuti</li>
+          <li>Community management (commenti e DM)</li>
+          <li>Report mensile con analisi performance</li>
+          <li>Ottimizzazione continua basata sui dati</li>
+        </ul>
+      </div>
+      <a href="contatti.html" class="btn btn-dark">Parliamone <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+  <!-- 02 Content Strategy -->
+  <div class="servizio-full-item reverse">
+    <div class="sf-visual reveal d2">
+     <img src="images/image9.png" alt="Content Strategy">
+      <div class="sf-visual-accent"><span>Servizio</span><strong>Content Strategy</strong></div>
+    </div>
+    <div class="sf-text reveal">
+      <div class="s-num">02</div>
+      <h2>Content<br><em>Strategy</em></h2>
+      <p>Il tuo piano d'attacco narrativo. Definisco obiettivi, tone of voice, pillar editoriali e un calendario che trasforma la tua comunicazione in un sistema coerente e misurabile.</p>
+      <div class="sf-includes">
+        <h4>Cosa è incluso</h4>
+        <ul class="sf-list">
+          <li>Analisi del brand e dei competitor</li>
+          <li>Definizione tone of voice e pillar</li>
+          <li>Piano editoriale trimestrale</li>
+          <li>Strategia di crescita per piattaforma</li>
+          <li>Workshop o call strategica mensile</li>
+        </ul>
+      </div>
+      <a href="contatti.html" class="btn btn-dark">Parliamone <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+  <!-- 03 Visual Design -->
+  <div class="servizio-full-item">
+    <div class="sf-visual reveal">
+    <img src="images/image10.png" alt="Video e Graphic">
+      <div class="sf-visual-accent"><span>Servizio</span><strong>Video & Design</strong></div>
+    </div>
+    <div class="sf-text reveal d2">
+      <div class="s-num">03</div>
+      <h2>Video & Visual<br><em>Design</em></h2>
+      <p>Grafiche e video professionali che catturano l'attenzione al primo scroll. Contenuti visivi pensati per il tuo brand, ottimizzati per ogni piattaforma e formato.</p>
+      <div class="sf-includes">
+        <h4>Cosa è incluso</h4>
+        <ul class="sf-list">
+          <li>Grafiche post e storie per tutti i canali</li>
+          <li>Reels e video brevi (editing + sottotitoli)</li>
+          <li>Moodboard e identità visiva social</li>
+          <li>Template brandizzati riutilizzabili</li>
+          <li>Revisioni incluse fino all'approvazione</li>
+        </ul>
+      </div>
+      <a href="contatti.html" class="btn btn-dark">Parliamone <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+  <!-- 04 AI Solutions -->
+  <div class="servizio-full-item reverse">
+    <div class="sf-visual reveal d2">
+      <img src="images/image11.png" alt="AI Solutions">
+      <div class="sf-visual-accent"><span>Servizio</span><strong>AI Solutions</strong></div>
+    </div>
+    <div class="sf-text reveal">
+      <div class="s-num">04</div>
+      <h2>AI Powered<br><em>Solutions</em></h2>
+      <p>Creo contenuti con AI generativa, automatizzo la pubblicazione e analizzo i dati per massimizzare le performance. Più output, più risultati — senza sacrificare autenticità.</p>
+      <div class="sf-includes">
+        <h4>Cosa è incluso</h4>
+        <ul class="sf-list">
+          <li>Generazione contenuti con AI (copy + visual)</li>
+          <li>Automazione del workflow editoriale</li>
+          <li>Analisi predittiva dei trend di settore</li>
+          <li>A/B testing automatizzato dei contenuti</li>
+          <li>Dashboard analytics personalizzata</li>
+        </ul>
+      </div>
+      <a href="contatti.html" class="btn btn-dark">Parliamone <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+</section>
+
+<!-- PROCESSO -->
+<div class="processo-section reveal">
+  <div class="processo-header">
+    <span class="tag tag-light">Come lavoro</span>
+    <h2 class="heading heading-light">Il metodo<br><em>Nika</em></h2>
+  </div>
+  <div class="processo-steps">
+    <div class="pstep reveal d1">
+      <div class="pstep-num">01</div>
+      <h3>Call Conoscitiva</h3>
+      <p>30 minuti gratuiti per capire il tuo brand, i tuoi obiettivi e le tue esigenze. Nessun impegno.</p>
+    </div>
+    <div class="pstep reveal d2">
+      <div class="pstep-num">02</div>
+      <h3>Analisi & Strategia</h3>
+      <p>Studio approfondito del tuo brand, dei competitor e del target. Produco un piano strategico su misura.</p>
+    </div>
+    <div class="pstep reveal d3">
+      <div class="pstep-num">03</div>
+      <h3>Produzione</h3>
+      <p>Creo i contenuti, li revisioniamo insieme e li pubblico secondo il calendario concordato.</p>
+    </div>
+    <div class="pstep reveal d4">
+      <div class="pstep-num">04</div>
+      <h3>Ottimizzazione</h3>
+      <p>Monitoro i risultati, analizzo i dati e ottimizo costantemente per massimizzare le performance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="tag reveal">FAQ</span>
+      <h2 class="heading reveal d1">Domande<br><em>frequenti</em></h2>
+    </div>
+    <div class="reveal d2">
+      <div class="faq-item">
+        <button class="faq-q">Come integri l'AI nei contenuti?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">L'AI è uno strumento, non un sostituto della creatività. La uso per velocizzare la ricerca, generare varianti di copy, analizzare performance e automatizzare processi ripetitivi. Il risultato finale passa sempre attraverso il mio editing e la mia visione editoriale.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Il servizio è personalizzabile?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Assolutamente sì. Non esiste un pacchetto standard: ogni collaborazione parte da un'analisi approfondita del tuo brand, degli obiettivi e del pubblico. Costruiamo insieme un percorso su misura che si adatta al tuo budget e alle tue esigenze.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quali piattaforme gestisci?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Lavoro principalmente con Instagram, LinkedIn, TikTok e Facebook. Posso supportarti anche nella gestione di newsletter, blog e altri canali. La scelta dipende sempre dal tuo target e dagli obiettivi di business.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Come inizia la collaborazione?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Il primo passo è una call conoscitiva gratuita di 30 minuti in cui esploriamo le tue esigenze e la visione del tuo brand. Se c'è allineamento, procedo con un'analisi approfondita e la proposta di un piano strategico personalizzato.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Lavori con ogni tipo di brand?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Sono selettiva nelle collaborazioni. Lavoro con imprenditori, professionisti e brand che hanno una visione chiara e vogliono costruire qualità digitale. Non faccio quantità: preferisco pochi clienti a cui dedicare attenzione e cura massima.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner reveal">
+  <span class="tag tag-light">Iniziamo</span>
+  <h2 class="heading heading-light">Quale servizio fa<br><em>per il tuo brand?</em></h2>
+  <p class="cta-sub">Scrivimi e capiamo insieme il percorso più adatto a te.</p>
+  <a href="contatti.html" class="btn btn-light">Contattami ora <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><p>Nika</p><span>Social Media Manager & Content Strategist.<br>Creatività, algoritmo e AI per il tuo brand digitale.</span></div>
+    <div class="footer-col"><h4>Navigazione</h4><ul><li><a href="index.html">Home</a></li><li><a href="chi-sono.html">Chi sono</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+    <div class="footer-col"><h4>Servizi</h4><ul><li><a href="servizi.html">Social Media</a></li><li><a href="servizi.html">Content Strategy</a></li><li><a href="servizi.html">Visual Design</a></li><li><a href="servizi.html">AI Solutions</a></li></ul></div>
+    <div class="footer-col"><h4>Contatti</h4><ul>      <li><a href="/cdn-cgi/l/email-protection#2e474048416e4047454f4a4749475a4f42594b4c004d4143">E-mail</a></li><li><a href="https://wa.me/393318461681">WhatsApp</a></li><li><a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a></li><li><a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a></li> <li><a href="https://www.tiktok.com/@nikadigital.hub" target="_blank">TikTok</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Nikadigitalweb — P.IVA 00000000000</span>
+    <span class="footer-quote">"La creatività incontra l'algoritmo"</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/nikadigital.hub/" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.tiktok.com/@nikadigital.hub" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/393318461681" target="_blank" class="wa-btn" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="var(--beige)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.428a.75.75 0 0 0 .916.916l5.628-1.472A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.528-5.228-1.444l-.374-.223-3.88 1.016 1.03-3.762-.244-.389A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script>
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Sono — Nika Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── CHI SONO PAGE ── */
+
+/* PAGE HERO */
+.page-hero {
+  min-height: 100vh;
+  padding: 88px 0 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: stretch; position: relative; overflow: hidden;
+}
+.page-hero-left {
+  background: var(--verde);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 72px;
+  position: relative;
+}
+.page-hero-left::after {
+  content: '';
+  position: absolute; bottom: 0; right: -60px;
+  width: 120px; height: 100%;
+  background: var(--verde);
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  z-index: 2;
+}
+.page-hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.page-hero-eyebrow span { width: 40px; height: 1px; background: rgba(234,227,210,.4); }
+.page-hero-eyebrow p { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--beige); opacity: .55; }
+.page-hero-left h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1.05; color: var(--beige); font-weight: 700;
+  letter-spacing: -1.5px; margin-bottom: 24px;
+}
+.page-hero-left h1 em { font-style: italic; color: var(--beige-dark); display: block; }
+.page-hero-left p {
+  font-size: 15px; line-height: 1.85; color: var(--beige);
+  opacity: .65; font-weight: 300; max-width: 400px;
+}
+.page-hero-right {
+  position: relative; overflow: hidden;
+}
+.page-hero-right img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+.page-hero-right-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(37,51,40,.4) 0%, transparent 60%);
+}
+
+/* VALORI */
+.valori-section {
+  padding: 120px 64px;
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 100px; align-items: center;
+}
+.valori-intro .tag { margin-bottom: 14px; }
+.valori-intro .heading { margin-bottom: 24px; }
+.valori-intro p { font-size: 15px; line-height: 1.9; color: var(--verde); opacity: .68; font-weight: 300; }
+.valori-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.valore-card {
+  background: var(--beige); border-radius: var(--r-xl);
+  padding: 36px 30px; transition: var(--t);
+}
+.valore-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.valore-icon {
+  width: 48px; height: 48px; border-radius: var(--r-sm);
+  background: rgba(54,71,52,.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.valore-icon svg { width: 20px; height: 20px; stroke: var(--verde); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.valore-card h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--verde); margin-bottom: 8px; }
+.valore-card p { font-size: 13px; line-height: 1.75; color: var(--verde); opacity: .6; }
+.valore-card:nth-child(3) { background: var(--verde); }
+.valore-card:nth-child(3) .valore-icon { background: rgba(234,227,210,.12); }
+.valore-card:nth-child(3) .valore-icon svg { stroke: var(--beige); }
+.valore-card:nth-child(3) h3, .valore-card:nth-child(3) p { color: var(--beige); }
+.valore-card:nth-child(3) p { opacity: .65; }
+
+/* PERCORSO / TIMELINE */
+.percorso-section { padding: 0 64px 120px; }
+.percorso-inner {
+  background: var(--verde); border-radius: var(--r-xl);
+  padding: 80px 72px;
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 80px; align-items: start;
+}
+.percorso-intro .tag { color: rgba(234,227,210,.55); }
+.percorso-intro .heading { color: var(--beige); margin-bottom: 20px; }
+.percorso-intro p { font-size: 14px; line-height: 1.85; color: var(--beige); opacity: .6; font-weight: 300; }
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+  width: 1px; background: rgba(234,227,210,.15);
+}
+.tl-item {
+  display: flex; gap: 28px; margin-bottom: 44px;
+  position: relative;
+}
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 50%; background: rgba(234,227,210,.12);
+  border: 1px solid rgba(234,227,210,.2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.tl-dot span { font-family: 'Playfair Display', serif; font-size: 12px; color: var(--beige); opacity: .7; font-weight: 700; }
+.tl-content {}
+.tl-year { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--beige); opacity: .4; margin-bottom: 6px; }
+.tl-title { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--beige); margin-bottom: 6px; font-weight: 600; }
+.tl-body { font-size: 13px; line-height: 1.75; color: var(--beige); opacity: .55; }
+
+/* SKILLS */
+.skills-section {
+  padding: 0 64px 120px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.skills-left .tag { margin-bottom: 14px; }
+.skills-left .heading { margin-bottom: 20px; }
+.skills-left p { font-size: 15px; line-height: 1.9; color: var(--verde); opacity: .68; font-weight: 300; margin-bottom: 36px; }
+.tools-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-tag {
+  background: var(--beige); border-radius: 50px;
+  padding: 8px 18px; font-size: 11px; font-weight: 600;
+  letter-spacing: .5px; color: var(--verde);
+}
+.skills-bars {}
+.skill-bar { margin-bottom: 24px; }
+.skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.skill-bar-name { font-size: 12px; font-weight: 600; color: var(--verde); letter-spacing: .5px; }
+.skill-bar-pct { font-size: 11px; color: var(--verde); opacity: .5; }
+.skill-bar-track { height: 4px; background: var(--beige-dark); border-radius: 2px; overflow: hidden; }
+.skill-bar-fill {
+  height: 100%; background: var(--verde); border-radius: 2px;
+  width: 0; transition: width 1.2s var(--ease);
+}
+.skill-bar-fill.animated { width: var(--pct); }
+
+/* VIDEO / MEDIA section */
+.media-section { padding: 0 64px 120px; }
+.media-header { margin-bottom: 48px; }
+.media-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.media-item {
+  border-radius: var(--r-xl); overflow: hidden;
+  aspect-ratio: 9/16; background: var(--verde);
+  position: relative; cursor: pointer;
+  transition: var(--t);
+  display: block;
+}
+.media-item:first-child { aspect-ratio: 9/16; grid-row: span 1; }
+.media-item:hover { transform: scale(.97); }
+.media-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s ease; display: block; }
+.media-item:hover img { transform: scale(1.05); }
+.media-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(37,51,40,.75) 0%, transparent 55%);
+  opacity: 0; transition: var(--t);
+  display: flex; align-items: flex-end; padding: 24px;
+}
+.media-item:hover .media-overlay { opacity: 1; }
+.media-label { color: var(--beige); }
+.media-label strong { font-family: 'Playfair Display', serif; font-size: 16px; display: block; margin-bottom: 3px; }
+.media-label span { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .65; }
+.media-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; color: var(--beige); opacity: .25;
+}
+.media-placeholder svg { width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+.media-placeholder span { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; }
+
+/* CTA */
+.cta-banner {
+  margin: 0 40px 0;
+  background: var(--verde);
+  border-radius: var(--r-xl); padding: 100px 80px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: 'N'; position: absolute; top: -80px; right: -50px;
+  font-family: 'Playfair Display', serif; font-size: 520px;
+  font-weight: 700; font-style: italic;
+  color: rgba(234,227,210,.035); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.cta-banner .tag { color: rgba(234,227,210,.55); }
+.cta-banner .heading { max-width: 520px; margin: 0 auto 14px; }
+.cta-sub { font-size: 15px; color: var(--beige); opacity: .6; font-weight: 300; margin-bottom: 44px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .page-hero { grid-template-columns: 1fr; min-height: auto; }
+  .page-hero-left { padding: 60px 32px; }
+  .page-hero-left::after { display: none; }
+  .page-hero-right { height: 60vw; min-height: 300px; }
+  .valori-section { grid-template-columns: 1fr; padding: 80px 32px; gap: 48px; }
+  .percorso-section { padding: 0 32px 80px; }
+  .percorso-inner { grid-template-columns: 1fr; padding: 56px 40px; gap: 48px; }
+  .skills-section { grid-template-columns: 1fr; padding: 0 32px 80px; gap: 48px; }
+  .media-section { padding: 0 32px 80px; }
+  .cta-banner { margin: 0 20px 0; padding: 70px 40px; }
+}
+@media (max-width: 640px) {
+  .page-hero-left h1 { font-size: 40px; }
+  .valori-grid { grid-template-columns: 1fr; }
+  .percorso-inner { padding: 40px 28px; }
+  .media-grid { grid-template-columns: 1fr 1fr; }
+  .media-item:first-child { grid-row: span 1; aspect-ratio: 9/16; }
+  .cta-banner { margin: 0 12px 0; padding: 56px 24px; }
+  .skills-section { padding: 0 20px 60px; }
+  .valori-section { padding: 60px 20px; }
+  .media-section { padding: 0 20px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="contatti.html">Contatti</a>
+  <div class="mob-social">
+    <a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="site-nav solid" id="siteNav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nika"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="chi-sono.html" class="active">Chi sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="contatti.html" class="nav-cta">Scrivimi</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-left">
+    <div class="page-hero-eyebrow reveal"><span></span><p>Chi sono</p></div>
+    <h1 class="reveal d1">Sono<br><em>Nika.</em></h1>
+    <p class="reveal d2">Social Media Manager & Content Strategist. Costruisco brand digitali che lasciano il segno — con visual identity, strategia e intelligenza artificiale..</p>
+  </div>
+  <div class="page-hero-right reveal d2">
+    <img src="images/image.png" alt="Nika">
+  <div class="page-hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- VALORI -->
+<section class="valori-section">
+  <div class="valori-intro">
+    <span class="tag reveal">Il mio approccio</span>
+    <h2 class="heading reveal d1">Lavoro con<br><em>visione e metodo</em></h2>
+    <p class="reveal d2">Non faccio contenuti casuali. Ogni scelta — dal colore al copy, dal formato all'orario — è guidata da una strategia chiara e da dati reali. Perché l'estetica senza performance è decorazione.</p>
+  </div>
+  <div class="valori-grid">
+    <div class="valore-card reveal d1">
+      <div class="valore-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>Strategia prima di tutto</h3>
+      <p>Ogni contenuto ha un obiettivo. Definisco KPI chiari e li misuro con costanza.</p>
+    </div>
+    <div class="valore-card reveal d2">
+      <div class="valore-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h3>Estetica con anima</h3>
+      <p>Il visual design non è mai decorativo. È il primo linguaggio del tuo brand.</p>
+    </div>
+    <div class="valore-card reveal d3">
+      <div class="valore-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <h3>AI come amplificatore</h3>
+      <p>Uso l'intelligenza artificiale per fare di più, meglio e più velocemente — senza perdere autenticità.</p>
+    </div>
+    <div class="valore-card reveal d4">
+      <div class="valore-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Partnership reale</h3>
+      <p>Non sono un fornitore: sono la persona che tiene le redini della tua presenza digitale come fossero le proprie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERCORSO -->
+<section class="percorso-section">
+  <div class="percorso-inner reveal">
+    <div class="percorso-intro">
+      <span class="tag tag-light">Il mio percorso</span>
+      <h2 class="heading heading-light">Anni di<br><em>esperienza</em></h2>
+      <p>Dal primo contenuto ai brand complessi: un percorso costruito con curiosità, formazione continua e tanto lavoro sul campo.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal d1">
+        <div class="tl-dot"><span>1</span></div>
+        <div class="tl-content">
+          <div class="tl-year">Inizio carriera</div>
+          <div class="tl-title">Le radici creative</div>
+          <div class="tl-body">Tra commercio estero e fitness coaching ho sempre affiancato la parte creativa: contenuti, grafiche, editing video e gestione social nel settore fitness. La passione per il visual e la comunicazione era già lì.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal d2">
+        <div class="tl-dot"><span>2</span></div>
+        <div class="tl-content">
+          <div class="tl-year">Specializzazione</div>
+          <div class="tl-title">Digital Marketing & Content Strategy con AI</div>
+          <div class="tl-body">Ho scelto di trasformare la passione in professione: corso specializzato in digital marketing, content strategy e intelligenza artificiale. Metodo, strategia e tool AI diventano il mio sistema di lavoro.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal d3">
+        <div class="tl-dot"><span>3</span></div>
+        <div class="tl-content">
+          <div class="tl-year">Evoluzione</div>
+          <div class="tl-title">Web Creation & AI</div>
+          <div class="tl-body">Per essere completa a 360°, ho aggiunto la formazione in web creation e AI applicata. Dal contenuto al sito: ora gestisco l'intera presenza digitale di un brand.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal d4">
+        <div class="tl-dot"><span>✦</span></div>
+        <div class="tl-content">
+          <div class="tl-year">Oggi</div>
+          <div class="tl-title">Nika Digital</div>
+          <div class="tl-body">300+ contenuti prodotti, clienti da diversi settori, un metodo proprietario che unisce estetica editoriale e performance digitale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <div class="skills-left">
+    <span class="tag reveal">Competenze</span>
+    <h2 class="heading reveal d1">Cosa so<br><em>fare bene</em></h2>
+    <p class="reveal d2">Anni di pratica su piattaforme reali, con clienti reali e risultati misurabili. Non teorie: metodo applicato.</p>
+    <div class="tools-list reveal d3">
+      <span class="tool-tag">Instagram</span>
+      <span class="tool-tag">LinkedIn</span>
+      <span class="tool-tag">TikTok</span>
+      <span class="tool-tag">Canva Pro</span>
+      <span class="tool-tag">CapCut Pro</span>
+      <span class="tool-tag">ChatGPT / Claude</span>
+      <span class="tool-tag">Gemini</span>
+      <span class="tool-tag">Analytics</span>
+      <span class="tool-tag">Notion</span>
+      <span class="tool-tag">HeyGen</span>
+    </div>
+  </div>
+  <div class="skills-bars reveal d2">
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">Social Media Management</span><span class="skill-bar-pct">95%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:95%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">Content Strategy</span><span class="skill-bar-pct">92%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:92%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">Visual Design</span><span class="skill-bar-pct">88%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:90%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">Video Editing</span><span class="skill-bar-pct">82%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:90%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">AI & Automazioni</span><span class="skill-bar-pct">90%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:88%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-bar-header"><span class="skill-bar-name">Analytics & Data</span><span class="skill-bar-pct">85%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:89%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA / PORTFOLIO -->
+<section class="media-section">
+  <div class="media-header">
+    <span class="tag reveal">Portfolio visivo</span>
+    <h2 class="heading reveal d1">Contenuti che<br><em>parlano da soli</em></h2>
+  </div>
+  
+  <div class="media-grid reveal d2">
+    <div class="media-item">
+     <img src="images/image5.png" alt="Portfolio">
+      <div class="media-overlay"><div class="media-label"><strong>Brand Identity</strong><span>Instagram Feed</span></div></div>
+    </div>
+    
+    <div class="media-item">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="videos/video1.mp4" type="video/mp4">
+      </video>
+      <div class="media-overlay"><div class="media-label"><strong>Reel</strong><span>Tik Tok</span></div></div>
+    </div>
+    <div class="media-item">
+      <img src="images/image7.png" alt="Portfolio">
+      <div class="media-overlay"><div class="media-label"><strong>Content Design</strong><span>LinkedIn</span></div></div>
+    </div>
+    <div class="media-item">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="videos/video2.mp4" type="video/mp4">
+      </video>
+      <div class="media-overlay"><div class="media-label"><strong>AI-Generated Content</strong><span>Instagram</span></div></div>
+    </div>
+    <div class="media-item">
+      <img src="images/image6.png" alt="Portfolio">
+      <div class="media-overlay"><div class="media-label"><strong>Visual Strategy</strong><span>Feed Instagram</span></div></div>
+    </div>
+    <div class="media-item">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="videos/video3.mp4" type="video/mp4">
+      </video>
+      <div class="media-overlay"><div class="media-label"><strong>Behind the Scenes</strong><span>Instagram</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner reveal">
+  <span class="tag tag-light">Lavoriamo insieme</span>
+  <h2 class="heading heading-light">Vuoi un brand<br><em>che si ricorda?</em></h2>
+  <p class="cta-sub">Inizia con una call conoscitiva gratuita di 30 minuti.</p>
+  <a href="contatti.html" class="btn btn-light">Prenota la call <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <p>Nika</p>
+      <span>Social Media Manager & Content Strategist.<br>Creatività, algoritmo e AI per il tuo brand digitale.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Navigazione</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servizi</h4>
+      <ul>
+        <li><a href="servizi.html">Social Media</a></li>
+        <li><a href="servizi.html">Content Strategy</a></li>
+        <li><a href="servizi.html">Visual Design</a></li>
+        <li><a href="servizi.html">AI Solutions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <ul>
+     <li><a href="mailto:info@nikadigitalweb.com">E-mail</a>
+        <li><a href="https://wa.me/393318461681">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.tiktok.com/@nikadigital.hub" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Nikadigitalweb — P.IVA 00000000000</span>
+    <span class="footer-quote">"La creatività incontra l'algoritmo"</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/nikadigital.hub/" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.tiktok.com/@nikadigital.hub" target="_blank" class="fsoc"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/393318461681" target="_blank" class="wa-btn" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--beige)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.428a.75.75 0 0 0 .916.916l5.628-1.472A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.528-5.228-1.444l-.374-.223-3.88 1.016 1.03-3.762-.244-.389A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script src="shared.js"></script>
+<script>
+var bars = document.querySelectorAll('.skill-bar-fill');
+var barObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('animated'); });
+}, { threshold: 0.3 });
+bars.forEach(function(b) { barObs.observe(b); });
+</script>
+</body>
+</html>
