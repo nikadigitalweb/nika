@@ -194,12 +194,21 @@
 }
 @media (max-width: 640px) {
   .page-hero { grid-template-columns: 1fr; padding: 120px 20px 60px; }
-  .page-hero-stats { grid-template-columns: 1fr 1fr; }
-  .processo-section { margin: 0 12px; padding: 48px 24px; }
-  .processo-steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .page-hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hero-stat-card { padding: 22px 18px; }
+  .hero-stat-card strong { font-size: 34px; }
+  .processo-section { margin: 0 12px; padding: 48px 20px; }
+  .processo-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .pstep { padding: 0 10px; }
   .faq-section { padding: 60px 20px; }
   .cta-banner { margin: 40px 12px 0; padding: 56px 24px; }
   .servizi-full { padding: 60px 20px; }
+  .servizio-full-item { padding: 48px 0; gap: 28px; }
+}
+@media (max-width: 420px) {
+  .page-hero-stats { grid-template-columns: 1fr 1fr; }
+  .processo-steps { grid-template-columns: 1fr; gap: 36px; }
+  .processo-steps::before { display: none; }
 }
 </style>
 </head>
