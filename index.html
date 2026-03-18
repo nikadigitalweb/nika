@@ -275,9 +275,9 @@ body { background: var(--beige-light); }
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 1fr; padding-top: 88px; }
   .hero-left { padding: 60px 32px 40px; }
-  .hero-right { height: 70vw; min-height: 360px; }
+  .hero-right { height: 60vw; min-height: 320px; }
   .hero-right-overlay { background: linear-gradient(to right, var(--beige-light) 0%, transparent 30%); }
-  .hero-chips { bottom: 20px; left: 16px; gap: 10px; }
+  .hero-chips { bottom: 24px; left: 16px; }
   .about-teaser { padding: 80px 32px; gap: 48px; }
   .servizi-teaser { padding: 0 32px 80px; }
   .testimonials { padding: 0 32px 80px; }
@@ -286,33 +286,16 @@ body { background: var(--beige-light); }
 }
 @media (max-width: 768px) {
   .hero-left { padding: 40px 20px 32px; }
-  .hero-right { height: 75vw; min-height: 300px; }
+  .hero-right { height: 55vw; }
   .hero-btns { flex-direction: column; }
-  .hero-btns .btn { width: 100%; justify-content: center; }
-  /* hero-chips: più compatte su mobile */
-  .hero-chips { bottom: 16px; left: 12px; gap: 8px; }
-  .hero-chip { padding: 10px 14px; }
-  .hero-chip strong { font-size: 16px; }
-  .hero-chip.dark strong { font-size: 12px; }
-  /* about */
   .about-teaser { grid-template-columns: 1fr; padding: 60px 20px; }
-  .about-img-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: 280px; }
-  .about-img-item:first-child { grid-row: span 2; }
+  .about-img-grid { grid-template-rows: 200px 130px; }
   .sec-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cards-grid { grid-template-columns: 1fr; }
   .t-card { min-width: 100%; }
   .cta-banner { margin: 0 12px 0; padding: 56px 24px; }
   .cta-banner .heading { font-size: 28px; }
   .about-nums { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .hero-right { height: 85vw; }
-  .hero-chips { flex-direction: row; flex-wrap: wrap; bottom: 12px; left: 10px; right: 10px; }
-  .hero-chip { flex: 1; min-width: 120px; }
-  .about-img-grid { height: 220px; }
-  .about-nums { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .about-num-item { padding: 14px; }
-  .about-num-item strong { font-size: 26px; }
 }
 </style>
 
@@ -653,10 +636,42 @@ body { background: var(--beige-light); }
   border-radius: 16px; font-size: 12.5px; line-height: 1.6;
   animation: msgIn 0.28s ease;
 }
+.msg-typing {
+  display: flex; align-items: center; gap: 5px;
+  padding: 12px 16px; min-width: 56px;
+}
+.typing-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--verde); opacity: 0.35;
+  animation: typingBounce 1.2s ease-in-out infinite;
+  display: inline-block;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
+  30% { transform: translateY(-5px); opacity: 0.9; }
+}
 @keyframes msgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 .msg-bot {
   background: var(--beige); color: var(--verde);
   border-bottom-left-radius: 4px; align-self: flex-start;
+}
+/* Animazione per la comparsa fluida dei bottoni */
+@keyframes btnIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Applichiamo l'animazione alla classe dei bottoni */
+.c-btn, .c-btn-link, .c-btn-menu {
+  animation: btnIn 0.4s ease forwards;
 }
 .msg-user {
   background: var(--verde); color: var(--beige);
@@ -828,34 +843,80 @@ function toggleChat() {
 function addMsg(type, text) {
   var d = document.createElement('div');
   d.className = 'msg msg-' + type;
-  d.textContent = text;
+  msgEl.appendChild(d);
+  
+  if (type === 'user') {
+    d.textContent = text;
+  } else {
+    // Effetto typing per il bot
+    let i = 0;
+    let speed = 25; // Velocità di battitura (ms)
+    
+    function typeWriter() {
+      if (i < text.length) {
+        d.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+        msgEl.scrollTop = msgEl.scrollHeight;
+      }
+    }
+    typeWriter();
+  }
+  msgEl.scrollTop = msgEl.scrollHeight;
+}
+
+function addTyping() {
+  var d = document.createElement('div');
+  d.className = 'msg msg-bot msg-typing';
+  d.id = 'typing-indicator';
+  d.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
   msgEl.appendChild(d);
   msgEl.scrollTop = msgEl.scrollHeight;
+}
+
+function removeTyping() {
+  var t = document.getElementById('typing-indicator');
+  if (t) t.remove();
 }
 
 function goTo(nodeKey, userLabel) {
   if (userLabel) addMsg('user', userLabel);
   var node = tree[nodeKey];
   optEl.innerHTML = '';
+
   setTimeout(function() {
-    addMsg('bot', node.bot);
-    node.opts.forEach(function(opt) {
-      if (opt.link) {
-        var a = document.createElement('a');
-        a.className = 'c-btn-link';
-        a.textContent = opt.label;
-        a.href = opt.link;
-        if (opt.link.startsWith('http')) a.target = '_blank';
-        optEl.appendChild(a);
-      } else {
-        var btn = document.createElement('button');
-        btn.className = opt.next === 'main' ? 'c-btn-menu' : 'c-btn';
-        btn.textContent = opt.label;
-        btn.onclick = function() { goTo(opt.next, opt.label); };
-        optEl.appendChild(btn);
-      }
-    });
-  }, 350);
+    addTyping();
+    setTimeout(function() {
+      removeTyping();
+      
+      // Calcoliamo la durata della digitazione per ritardare i bottoni
+      var typingDuration = node.bot.length * 25; 
+      addMsg('bot', node.bot);
+
+      // Mostra i bottoni solo dopo che il testo è completo
+      setTimeout(function() {
+        node.opts.forEach(function(opt, index) {
+          var element;
+          if (opt.link) {
+            element = document.createElement('a');
+            element.className = 'c-btn-link';
+            element.href = opt.link;
+            if (opt.link.startsWith('http')) element.target = '_blank';
+          } else {
+            element = document.createElement('button');
+            element.className = opt.next === 'main' ? 'c-btn-menu' : 'c-btn';
+            element.onclick = function() { goTo(opt.next, opt.label); };
+          }
+          element.textContent = opt.label;
+          
+          // Aggiungiamo un micro-ritardo tra un bottone e l'altro per eleganza
+          element.style.animationDelay = (index * 0.1) + 's';
+          optEl.appendChild(element);
+        });
+      }, typingDuration + 200);
+
+    }, 1200); // Pausa riflessiva iniziale
+  }, 300);
 }
 </script>
 
