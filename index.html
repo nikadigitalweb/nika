@@ -12,6 +12,25 @@
 /* ── HOME PAGE STYLES ── */
 body { background: var(--beige-light); }
 
+/* NAV LOGO TEXT */
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-text {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.nav-logo-text strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+  color: var(--verde); line-height: 1.1;
+}
+.nav-logo-text em {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 400; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--verde); opacity: .55;
+  font-style: normal;
+}
+
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -274,39 +293,30 @@ body { background: var(--beige-light); }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 1024px) {
+  .scroll-hint { display: none; }
   .hero { grid-template-columns: 1fr; padding-top: 88px; }
   .hero-left { padding: 60px 32px 40px; }
   .hero-right { height: 75vw; min-height: 360px; }
-  .hero-right-overlay { background: linear-gradient(to bottom, var(--beige-light) 0%, transparent 15%), linear-gradient(to right, var(--beige-light) 0%, transparent 20%); }
-  .hero-chips { bottom: 20px; left: 16px; gap: 10px; }
+  .hero-right-overlay { background: linear-gradient(to right, var(--beige-light) 0%, transparent 30%); }
+  .hero-chips { bottom: 24px; left: 16px; }
   .about-teaser { padding: 80px 32px; gap: 48px; }
   .servizi-teaser { padding: 0 32px 80px; }
   .testimonials { padding: 0 32px 80px; }
   .cta-banner { margin: 0 20px 0; padding: 70px 40px; }
+  .scroll-hint { left: 32px; }
 }
 @media (max-width: 768px) {
   .hero-left { padding: 40px 20px 32px; }
-  .hero-right { height: 82vw; min-height: 300px; }
+  .hero-right { height: 80vw; min-height: 300px; }
   .hero-btns { flex-direction: column; }
-  .hero-btns .btn { width: 100%; justify-content: center; }
-  .hero-chips { bottom: 14px; left: 12px; gap: 8px; }
-  .hero-chip { padding: 10px 14px; }
-  .hero-chip strong { font-size: 16px; }
-  .hero-chip.dark strong { font-size: 12px; }
   .about-teaser { grid-template-columns: 1fr; padding: 60px 20px; }
-  .about-img-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: 260px; }
-  .about-img-item:first-child { grid-row: span 2; }
+  .about-img-grid { grid-template-rows: 200px 130px; }
   .sec-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cards-grid { grid-template-columns: 1fr; }
   .t-card { min-width: 100%; }
   .cta-banner { margin: 0 12px 0; padding: 56px 24px; }
   .cta-banner .heading { font-size: 28px; }
   .about-nums { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .hero-right { height: 92vw; }
-  .hero-chips { flex-direction: row; flex-wrap: wrap; bottom: 10px; left: 8px; right: 8px; }
-  .hero-chip { flex: 1; min-width: 110px; }
 }
 </style>
 
@@ -332,7 +342,13 @@ body { background: var(--beige-light); }
 
 <!-- NAVBAR -->
 <nav class="site-nav" id="siteNav">
-  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nika"></a>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Nika">
+    <div class="nav-logo-text">
+      <strong>Nika</strong>
+      <em>Digital Web</em>
+    </div>
+  </a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="chi-sono.html">Chi sono</a></li>
@@ -517,11 +533,13 @@ body { background: var(--beige-light); }
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-brand-logo">
-        <img src="images/logo.png" alt="Nika" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-        <p style="display:none;">Nika</p>
-        <span class="footer-brand-name">Nikadigitalweb</span>
-      </div>
+      <div class="footer-brand-top">
+  <img src="images/logo2.png" alt="Nika" class="footer-logo-img">
+  <div class="footer-brand-sitename">
+    <strong>Nika</strong>
+    <em>Digital Web</em>
+  </div>
+</div>
       <span>SMM & Content Strategist.<br>Creatività, Visual e AI per il tuo brand.</span>
     </div>
     <div class="footer-col">
@@ -545,7 +563,7 @@ body { background: var(--beige-light); }
     <div class="footer-col">
       <h4>Contatti</h4>
       <ul>
-      <li><a href="/cdn-cgi/l/email-protection#61080f070e210f080a000508060815000d1604034f020e0c">E-mail</a></li>
+    <li><a id="footer-email-index" href="mailto:info&#64;nikadigitalweb.com">E-mail</a></li>
         <li><a href="https://wa.me/393318461681">WhatsApp</a></li>
         <li><a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a></li>
         <li><a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a></li>
@@ -736,7 +754,7 @@ body { background: var(--beige-light); }
 }
 </style>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var chatOpen = false;
 var msgEl = document.getElementById('chat-messages');
 var optEl = document.getElementById('chat-options');
@@ -999,9 +1017,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   startAuto();
 
-  /* ── Swipe touch/mouse ── */
-  var startX = 0;
-  outer.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
-  outer.addEventListener("touchend", function (e) {
-    var diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) { resetAuto(); go(cur + (diff > 0 ? 1 : -1)); }
+  /* ── Swipe touch/mouse ─�

@@ -193,22 +193,26 @@
   .cta-banner { margin: 40px 20px 0; padding: 70px 40px; }
 }
 @media (max-width: 640px) {
-  .page-hero { grid-template-columns: 1fr; padding: 120px 20px 60px; }
+  .page-hero { grid-template-columns: 1fr; padding: 100px 20px 56px; }
   .page-hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .hero-stat-card { padding: 22px 18px; }
-  .hero-stat-card strong { font-size: 34px; }
+  .hero-stat-card { padding: 20px 16px; }
+  .hero-stat-card strong { font-size: 32px; }
   .processo-section { margin: 0 12px; padding: 48px 20px; }
-  .processo-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .pstep { padding: 0 10px; }
-  .faq-section { padding: 60px 20px; }
-  .cta-banner { margin: 40px 12px 0; padding: 56px 24px; }
-  .servizi-full { padding: 60px 20px; }
-  .servizio-full-item { padding: 48px 0; gap: 28px; }
+  .processo-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .pstep { padding: 0 8px; }
+  .pstep h3 { font-size: 14px; }
+  .pstep p { font-size: 12px; }
+  .faq-section { padding: 56px 20px; }
+  .faq-q { font-size: 14px; }
+  .cta-banner { margin: 40px 12px 0; padding: 56px 20px; }
+  .servizi-full { padding: 56px 20px; }
+  .servizio-full-item { padding: 40px 0; gap: 24px; }
+  .sf-visual { aspect-ratio: 16/10; }
 }
 @media (max-width: 420px) {
   .page-hero-stats { grid-template-columns: 1fr 1fr; }
-  .processo-steps { grid-template-columns: 1fr; gap: 36px; }
-  .processo-steps::before { display: none; }
+  .processo-steps { grid-template-columns: 1fr; gap: 32px; }
+  .sf-includes h4 { font-size: 9px; }
 }
 </style>
 </head>
@@ -232,7 +236,13 @@
 
 <!-- NAVBAR -->
 <nav class="site-nav solid" id="siteNav">
-  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nika"></a>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Nika">
+    <div class="nav-logo-text">
+      <strong>Nika</strong>
+      <em>Digital Web</em>
+    </div>
+  </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="chi-sono.html">Chi sono</a></li>
@@ -431,10 +441,17 @@
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-grid">
-    <div class="footer-brand"><p>Nika</p><span>Social Media Manager & Content Strategist.<br>Creatività, algoritmo e AI per il tuo brand digitale.</span></div>
+     <div class="footer-brand">
+      <div class="footer-brand-top">
+  <img src="images/logo2.png" alt="Nika" class="footer-logo-img">
+  <div class="footer-brand-sitename">
+    <strong>Nika</strong>
+    <em>Digital Web</em>
+  </div>
+</div>      <span>SMM & Content Strategist.<br>Creatività, Visual e AI per il tuo brand.</span></div>
     <div class="footer-col"><h4>Navigazione</h4><ul><li><a href="index.html">Home</a></li><li><a href="chi-sono.html">Chi sono</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
     <div class="footer-col"><h4>Servizi</h4><ul><li><a href="servizi.html">Social Media</a></li><li><a href="servizi.html">Content Strategy</a></li><li><a href="servizi.html">Visual Design</a></li><li><a href="servizi.html">AI Solutions</a></li></ul></div>
-    <div class="footer-col"><h4>Contatti</h4><ul>      <li><a href="/cdn-cgi/l/email-protection#2e474048416e4047454f4a4749475a4f42594b4c004d4143">E-mail</a></li><li><a href="https://wa.me/393318461681">WhatsApp</a></li><li><a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a></li><li><a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a></li> <li><a href="https://www.tiktok.com/@nikadigital.hub" target="_blank">TikTok</a></li></ul></div>
+    <div class="footer-col"><h4>Contatti</h4><ul>      <li><a id="footer-email-servizi" href="mailto:info&#64;nikadigitalweb.com">E-mail</a></li><li><a href="https://wa.me/393318461681">WhatsApp</a></li><li><a href="https://www.instagram.com/nikadigital.hub/" target="_blank">Instagram</a></li><li><a href="https://www.linkedin.com/in/nicolemarradigital/" target="_blank">LinkedIn</a></li> <li><a href="https://www.tiktok.com/@nikadigital.hub" target="_blank">TikTok</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 Nikadigitalweb — P.IVA 00000000000</span>
@@ -449,7 +466,7 @@
 
 <a href="https://wa.me/393318461681" target="_blank" class="wa-btn" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="var(--beige)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.828L.057 23.428a.75.75 0 0 0 .916.916l5.628-1.472A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.528-5.228-1.444l-.374-.223-3.88 1.016 1.03-3.762-.244-.389A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
 <script>
 document.querySelectorAll('.faq-q').forEach(function(btn) {
   btn.addEventListener('click', function() {
@@ -460,5 +477,8 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
   });
 });
 </script>
-</body>
-</html>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  var u="info",d="nikadigitalweb",t="com",e=u+"@"+d+"."+t;
+  var ids=["footer-email-index","footer-email-chisono","footer-email-servizi","footer-email-contatti","ci-email"];
+  ids.forEach(f
