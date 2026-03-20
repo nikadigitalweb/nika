@@ -113,6 +113,7 @@ body { background: var(--beige-light); }
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--verde); opacity: .45; z-index: 3;
 }
+@media (max-width: 1024px) { .scroll-hint { display: none; } }
 .scroll-line {
   width: 40px; height: 1px; background: var(--verde); opacity: .4;
   position: relative; overflow: hidden;
@@ -275,27 +276,37 @@ body { background: var(--beige-light); }
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 1fr; padding-top: 88px; }
   .hero-left { padding: 60px 32px 40px; }
-  .hero-right { height: 60vw; min-height: 320px; }
-  .hero-right-overlay { background: linear-gradient(to right, var(--beige-light) 0%, transparent 30%); }
-  .hero-chips { bottom: 24px; left: 16px; }
+  .hero-right { height: 75vw; min-height: 360px; }
+  .hero-right-overlay { background: linear-gradient(to bottom, var(--beige-light) 0%, transparent 15%), linear-gradient(to right, var(--beige-light) 0%, transparent 20%); }
+  .hero-chips { bottom: 20px; left: 16px; gap: 10px; }
   .about-teaser { padding: 80px 32px; gap: 48px; }
   .servizi-teaser { padding: 0 32px 80px; }
   .testimonials { padding: 0 32px 80px; }
   .cta-banner { margin: 0 20px 0; padding: 70px 40px; }
-  .scroll-hint { left: 32px; }
 }
 @media (max-width: 768px) {
   .hero-left { padding: 40px 20px 32px; }
-  .hero-right { height: 55vw; }
+  .hero-right { height: 82vw; min-height: 300px; }
   .hero-btns { flex-direction: column; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+  .hero-chips { bottom: 14px; left: 12px; gap: 8px; }
+  .hero-chip { padding: 10px 14px; }
+  .hero-chip strong { font-size: 16px; }
+  .hero-chip.dark strong { font-size: 12px; }
   .about-teaser { grid-template-columns: 1fr; padding: 60px 20px; }
-  .about-img-grid { grid-template-rows: 200px 130px; }
+  .about-img-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: 260px; }
+  .about-img-item:first-child { grid-row: span 2; }
   .sec-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cards-grid { grid-template-columns: 1fr; }
   .t-card { min-width: 100%; }
   .cta-banner { margin: 0 12px 0; padding: 56px 24px; }
   .cta-banner .heading { font-size: 28px; }
   .about-nums { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-right { height: 92vw; }
+  .hero-chips { flex-direction: row; flex-wrap: wrap; bottom: 10px; left: 8px; right: 8px; }
+  .hero-chip { flex: 1; min-width: 110px; }
 }
 </style>
 
@@ -506,7 +517,11 @@ body { background: var(--beige-light); }
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <p>Nika</p>
+      <div class="footer-brand-logo">
+        <img src="images/logo.png" alt="Nika" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <p style="display:none;">Nika</p>
+        <span class="footer-brand-name">Nikadigitalweb</span>
+      </div>
       <span>SMM & Content Strategist.<br>Creatività, Visual e AI per il tuo brand.</span>
     </div>
     <div class="footer-col">
