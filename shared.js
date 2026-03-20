@@ -44,18 +44,34 @@ const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobMenu');
 const mobC = document.getElementById('mobClose');
 if (ham && mob) {
+  function menuOpen() {
+    ham.classList.add('is-open');
+    mob.classList.add('is-open');
+    // Nascondi logo e chatbot bubble
+    var logo = document.querySelector('.nav-logo');
+    var bubble = document.getElementById('chat-bubble');
+    var wa = document.querySelector('.wa-btn');
+    if (logo) logo.style.opacity = '0';
+    if (bubble) bubble.style.opacity = '0';
+    if (wa) wa.style.opacity = '0';
+  }
+  function menuClose() {
+    ham.classList.remove('is-open');
+    mob.classList.remove('is-open');
+    // Mostra di nuovo logo e chatbot bubble
+    var logo = document.querySelector('.nav-logo');
+    var bubble = document.getElementById('chat-bubble');
+    var wa = document.querySelector('.wa-btn');
+    if (logo) logo.style.opacity = '1';
+    if (bubble) bubble.style.opacity = '1';
+    if (wa) wa.style.opacity = '1';
+  }
   ham.addEventListener('click', () => {
-    ham.classList.toggle('is-open');
-    mob.classList.toggle('is-open');
+    if (ham.classList.contains('is-open')) menuClose();
+    else menuOpen();
   });
-  if (mobC) mobC.addEventListener('click', () => {
-    ham.classList.remove('is-open');
-    mob.classList.remove('is-open');
-  });
-  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    ham.classList.remove('is-open');
-    mob.classList.remove('is-open');
-  }));
+  if (mobC) mobC.addEventListener('click', menuClose);
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
 }
 
 // ── SCROLL REVEAL ──
